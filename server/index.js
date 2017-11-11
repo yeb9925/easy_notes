@@ -7,7 +7,7 @@ module.exports = app;
 
 if (process.env.NODE_ENV !== 'production') require('../secret');
 
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public/index.html'));
 })
 const createApp = () => {
