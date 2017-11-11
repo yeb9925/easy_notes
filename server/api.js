@@ -1,4 +1,4 @@
-const router = require('rexpres').Router();
+const router = require('expres').Router();
 const mongo = require('mongodb');
 
 module.exporst = router;

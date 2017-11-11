@@ -1,5 +1,6 @@
-const express = require('express')
-const bodyParser = require('body-parser')
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
 const app = express();
 module.exports = app;
 
@@ -11,6 +12,10 @@ const createApp = () => {
   app.use(bodyParser.urlencoded({ extended: true }));
 
   app.use('/api', require('./api'));
+
+  app.use('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public/index.html'))
+  })
 
 // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
