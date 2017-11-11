@@ -1,0 +1,58 @@
+//react and react-native
+import React, { Component } from 'react';
+import {
+  Platform,
+  StyleSheet,
+  View,
+  TextInput,
+  ScrollView
+} from 'react-native';
+
+import { Actions } from 'react-native-router-flux';
+import { Button } from 'react-native-elements';
+
+//actions
+import { updatedNote } from '../reducers/note';
+
+//react-redux
+import { connect } from 'react-redux';
+
+class Paper extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render(){
+    return (
+      <View style={styles.container}>
+        <TextInput 
+         onChangeText={(notes) => this.props.updateNote(notes)}
+         underlineColorAndroid='transparent'
+         multiline={true} 
+         autoFocus={true}
+         autoGrow={true}
+         />
+      </View>
+    )
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFEBCD',
+  }
+});
+
+const mapState = (state) => {
+  return {};
+}
+const mapDispatch = dispatch => {
+  return {
+    updateNote(note){
+        dispatch(updatedNote(note))
+    }
+  }
+}
+
+export default connect(mapState, mapDispatch)(Paper);
