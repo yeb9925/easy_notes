@@ -7,16 +7,15 @@ module.exports = app;
 
 if (process.env.NODE_ENV !== 'production') require('../secret');
 
+app.use('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public/index.html'));
+})
 const createApp = () => {
   // body parsing middleware
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
 
   app.use('/api', require('./api'));
-
-  app.use('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public/index.html'))
-  })
 
 // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
