@@ -7,12 +7,14 @@
 		"test": "jest"
 	},
 	"dependencies": {
+		"axios": "^0.17.0",
+		"body-parser": "^1.18.2",
+		"express": "^4.16.2",
 		"mongodb": "^2.2.33",
 		"react": "16.0.0",
 		"react-native": "0.50.3",
 		"react-native-calendar": "^0.13.1",
 		"react-native-elements": "^0.18.2",
-		"react-native-local-mongodb": "^1.8.2",
 		"react-native-router-flux": "^4.0.0-beta.23",
 		"react-native-vector-icons": "^4.4.2",
 		"react-redux": "^5.0.6",
