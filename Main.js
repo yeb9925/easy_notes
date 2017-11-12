@@ -15,9 +15,9 @@ import store from './app/reducers/index';
 class Main extends Component {
   render() {
     return (
-      <Router navigationBarStyle={{ backgroundColor: '#81b71a' }}>
+      <Router navigationBarStyle={{ backgroundColor: '#FFDEAD' }}>
         <Scene key="root">
-          <Scene key="home" component={Home} title="Home" renderBackButton={()=>(null)}/>
+          <Scene key="home" component={Home} renderBackButton={()=>(null)}/>
           <Scene key="calendar" component={ShowCalendar} title="Calendar"/>
           <Scene
            key="paper"

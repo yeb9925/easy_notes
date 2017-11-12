@@ -35,13 +35,13 @@ class Home extends Component {
         <Button 
          onPress={() => Actions.calendar()} 
          title="Open Calender"
-         buttonStyle={{backgroundColor: 'blue', borderRadius: 10, margin: 5}}
+         buttonStyle={{backgroundColor: '#FFDAB9', borderRadius: 10, margin: 5}}
          textStyle={{textAlign: 'center'}}
         />
         <Button
          title="Take Note!"
          onPress={() => Actions.paper()}
-         buttonStyle={{backgroundColor: 'green', borderRadius: 10, margin: 5}}
+         buttonStyle={{backgroundColor: '#DEB887', borderRadius: 10, margin: 5}}
          textStyle={{textAlign: 'center'}}
         />
       </View>
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFFAF0',
   },
   titleText: {
     fontFamily: 'Cochin',
