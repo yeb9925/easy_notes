@@ -3,7 +3,7 @@ const MongoClient = require('mongodb').MongoClient;
 
 const key = require('../config');
 
-module.exports = router;
+module.exports = router;3
 
 //get all notes
 router.get('/', (req, res, next) => {

@@ -39,7 +39,7 @@ class Home extends Component {
          textStyle={{textAlign: 'center'}}
         />
         <Button
-         title="Take Note!"
+         title="Take Notes!"
          onPress={() => Actions.paper()}
          buttonStyle={{backgroundColor: '#DEB887', borderRadius: 10, margin: 5}}
          textStyle={{textAlign: 'center'}}
