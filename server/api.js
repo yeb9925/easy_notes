@@ -54,7 +54,7 @@ router.put('/:id', (req, rex, next) => {
   const _id = req.params.id,
         updates = req.body;
   MongoClient.connect(key, (err, db) => {
-    db.notes.findOneAndUpdate(
+    db.notes.update(
       { _id }, //find by _id
       updates // update the note
     );
@@ -66,7 +66,7 @@ router.put('/:id', (req, rex, next) => {
 router.delete('/:id', (req, res, next) => {
   const _id = req.params.id;
   MongoClient.connect(key, (err, db) => {
-    db.notes.findOneAndDelete( { _id } );
+    db.notes.remove( { _id } );
     db.close();
   });
 });
