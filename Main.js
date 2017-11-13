@@ -15,14 +15,17 @@ import { selectSubject } from './app/reducers/subject';
 
 import { connect } from 'react-redux';
 
+//helper
+import axios from 'axios';
+
 class Main extends Component {
 
-  postNote(e){
-    e.preventDefault();
-    axios.post('/', { topic: this.props.subject, date: this.props.day, note: this.props.note });
+  constructor(props){
+    super(props);
   }
 
   render() {
+    console.log(this.props)
     return (
       <Router navigationBarStyle={{ backgroundColor: '#FFDEAD' }}>
         <Scene key="root">
@@ -33,7 +36,7 @@ class Main extends Component {
            component={Paper} 
            title="Notes"
            onRight={() => {
-             this.postNote.bind(this);
+             axios.post('/api', { topic: this.props.subject, date: this.props.day, note: this.props.note });
              this.props.clearState();
              Actions.home();
            }}
