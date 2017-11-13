@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 1337;
 module.exports = app;
 
 if (process.env.NODE_ENV !== 'production') require('../secret');
@@ -45,5 +45,5 @@ const startListening = () => {
 // i.e. when we say 'node server/index.js' (or 'nodemon server/index.js', or 'nodemon server', etc)
 // It will evaluate false when this module is required by another module - for example,
 // if we wanted to require our app in a test spec
-createApp();
 startListening();
+createApp();
