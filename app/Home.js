@@ -71,8 +71,7 @@ const styles = StyleSheet.create({
 
 const mapState = (state) => {
   return {
-    subject: state.subject,
-    date: state.date
+    subject: state.subject
   };
 }
 const mapDispatch = dispatch => {

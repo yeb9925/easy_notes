@@ -20,7 +20,7 @@ class showCalendar extends Component {
 
   render() {
     let d = new Date();
-    let today = d.getFullYear() +"-"+ d.getMonth()+1 +"-"+ d.getDate();
+    let today = d.getFullYear() +"-"+ (d.getMonth()+1) +"-"+ d.getDate();
 
     return (
       <View>

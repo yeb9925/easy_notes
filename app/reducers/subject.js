@@ -13,6 +13,7 @@ const selectedSubject = '';
  */
 export const selectSubject = subject => ({type: GET_SUBJECT, subject});
 
+export const getSubjectState = () => selectedSubject;
 /**
  * THUNK CREATORS
  */
@@ -23,7 +24,7 @@ export const selectSubject = subject => ({type: GET_SUBJECT, subject});
 export default function (state = selectedSubject, action) {
   switch (action.type) {
     case GET_SUBJECT:
-      return action.subject;
+      return selectedSubject = action.subject;
     default:
       return state;
   }

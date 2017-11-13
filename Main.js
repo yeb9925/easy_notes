@@ -9,9 +9,9 @@ import ShowCalendar from './app/components/ShowCalendar';
 import Paper from './app/components/Paper';
 
 //actions
-import { updatedNote } from './app/reducers/note';
-import { selectDay } from './app/reducers/day';
-import { selectSubject } from './app/reducers/subject';
+import { updatedNote, getNoteState } from './app/reducers/note';
+import { selectDay, getDayState } from './app/reducers/day';
+import { selectSubject, getSubjectState } from './app/reducers/subject';
 
 //react-redux
 import { connect } from 'react-redux';
@@ -24,7 +24,6 @@ class Main extends Component {
 
   constructor(props){
     super(props);
-    this.state = store.getState()
   }
 
   render() {
@@ -38,11 +37,13 @@ class Main extends Component {
            component={Paper} 
            title="Notes"
            onRight={() => {
-             axios.post('https://easynotes.herokuapp.com/api', { topic: this.state.subject, date: this.state.day, note: this.state.note });
+             let info = this.props.retrieveState();
+             axios.post('https://easynotes.herokuapp.com/api', { topic: info.subject, date: info.date, content: info.note });
+             console.log(this.props)
              this.props.clearState();
              Actions.home();
            }}
-           rightTitle="Post"
+           rightTitle="Done"
           />
         </Scene>
       </Router>
@@ -60,6 +61,13 @@ const mapDispatch = dispatch => {
       dispatch(selectSubject(''));
       dispatch(selectDay(''));
       dispatch(updatedNote(''));
+    },
+    retrieveState(){
+      let subject = getSubjectState();
+      let date = getDayState();
+      let note = getNoteState();
+
+      return { subject, date, note };
     }
   }
 }
