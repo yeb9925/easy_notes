@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const mongo = require('mongodb');
 const ObjectId = require('mongodb').ObjectId;
-const assert = require('assert');
 
 const key = require('../config');
 
