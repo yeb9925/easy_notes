@@ -2,7 +2,7 @@ const router = require('express').Router();
 const mongo = require('mongodb');
 const ObjectId = require('mongodb').ObjectId;
 
-const key = require('../config');
+const key = process.env.MONGODB_URI || require('../config');
 
 module.exports = router;
 
