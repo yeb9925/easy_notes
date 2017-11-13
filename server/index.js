@@ -49,5 +49,5 @@ if (require.main === module) {
   createApp();
   startListening();
 } else {
-  createApp();
+  createApp;
 };
