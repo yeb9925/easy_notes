@@ -8,11 +8,20 @@ import Home from './app/Home';
 import ShowCalendar from './app/components/ShowCalendar';
 import Paper from './app/components/Paper';
 
-//react-redux
-import { Provider } from 'react-redux';
-import store from './app/reducers/index';
+//actions
+import { updatedNote } from './app/reducers/note';
+import { selectDay } from './app/reducers/day';
+import { selectSubject } from './app/reducers/subject';
+
+import { connect } from 'react-redux';
 
 class Main extends Component {
+
+  postNote(e){
+    e.preventDefault();
+    axios.post('/', { topic: this.props.subject, date: this.props.day, note: this.props.note });
+  }
+
   render() {
     return (
       <Router navigationBarStyle={{ backgroundColor: '#FFDEAD' }}>
@@ -23,7 +32,11 @@ class Main extends Component {
            key="paper"
            component={Paper} 
            title="Notes"
-           onRight={() => Actions.home()}
+           onRight={() => {
+             this.postNote.bind(this);
+             this.props.clearState();
+             Actions.home();
+           }}
            rightTitle="Post"
           />
         </Scene>
@@ -32,9 +45,22 @@ class Main extends Component {
   }
 }
 
-//hook up react-redux store to the main app
-export default App = () => (
-  <Provider store={store}>
-    <Main/>
-  </Provider>
-);
+const mapState = (state) => {
+  return {
+    subject: state.subject,
+    day: state.day,
+    note: state.note
+  };
+}
+
+const mapDispatch = dispatch => {
+  return {
+    clearState(){
+      dispatch(selecSubject(''));
+      dispatch(selectDay(''));
+      dispatch(updatedNote(''));
+    }
+  }
+}
+
+export default connect(mapState, mapDispatch)(Main);
