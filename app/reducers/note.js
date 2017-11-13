@@ -14,10 +14,6 @@ const updateNote = '';
 export const updatedNote = note => ({type: UPDATE_NOTE, note});
 
 /**
- * THUNK CREATORS
- */
-
-/**
  * REDUCER
  */
 export default function (state = updateNote, action) {
