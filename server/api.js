@@ -55,6 +55,7 @@ router.post('/', (req, res, next) => {
   const topic = req.body.topic,
         date = req.body.date,
         content = req.body.content;
+  console.log(req.body)
 
   mongo.connect(key, (err, db) => {
     db.collection('notes').insertOne({ topic, date, content });

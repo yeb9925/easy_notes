@@ -13,7 +13,9 @@ import { updatedNote } from './app/reducers/note';
 import { selectDay } from './app/reducers/day';
 import { selectSubject } from './app/reducers/subject';
 
+//react-redux
 import { connect } from 'react-redux';
+import store from './app/reducers';
 
 //helper
 import axios from 'axios';
@@ -22,10 +24,10 @@ class Main extends Component {
 
   constructor(props){
     super(props);
+    this.state = store.getState()
   }
 
   render() {
-    console.log(this.props)
     return (
       <Router navigationBarStyle={{ backgroundColor: '#FFDEAD' }}>
         <Scene key="root">
@@ -36,7 +38,7 @@ class Main extends Component {
            component={Paper} 
            title="Notes"
            onRight={() => {
-             axios.post('/api', { topic: this.props.subject, date: this.props.day, note: this.props.note });
+             axios.post('/api', { topic: this.state.subject, date: this.state.day, note: this.state.note });
              this.props.clearState();
              Actions.home();
            }}
@@ -49,17 +51,13 @@ class Main extends Component {
 }
 
 const mapState = (state) => {
-  return {
-    subject: state.subject,
-    day: state.day,
-    note: state.note
-  };
+  return {};
 }
 
 const mapDispatch = dispatch => {
   return {
     clearState(){
-      dispatch(selecSubject(''));
+      dispatch(selectSubject(''));
       dispatch(selectDay(''));
       dispatch(updatedNote(''));
     }
