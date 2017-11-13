@@ -38,7 +38,7 @@ class Main extends Component {
            component={Paper} 
            title="Notes"
            onRight={() => {
-             axios.post('/api', { topic: this.state.subject, date: this.state.day, note: this.state.note });
+             axios.post('https://easynotes.herokuapp.com/api', { topic: this.state.subject, date: this.state.day, note: this.state.note });
              this.props.clearState();
              Actions.home();
            }}
