@@ -12,7 +12,7 @@ import Calendar from 'react-native-calendar';
 import { selectDay } from '../reducers/day';
 import { connect } from 'react-redux';
 
-class showCalendar extends Component {
+class EditCalendar extends Component {
   constructor(props) {
     super(props);
   }
@@ -33,7 +33,7 @@ class showCalendar extends Component {
         nextButtonText={'Next'}
         onDateSelect={(date)=>{
           this.props.updateDay(date.slice(0,10));
-          Actions.home();
+          Actions.update_note();
         }} // Callback after date selection
         onDateLongPress={(date) => this.onDateLongPress(date)} // Callback after date is long pressed
         onSwipeNext={this.onSwipeNext}    // Callback for forward swipe event
@@ -68,4 +68,4 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(mapState, mapDispatch)(showCalendar);
+export default connect(mapState, mapDispatch)(EditCalendar);

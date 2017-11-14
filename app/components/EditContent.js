@@ -7,15 +7,13 @@ import {
   TextInput
 } from 'react-native';
 
-import { Button } from 'react-native-elements';
-
 //actions
 import { updatedNote } from '../reducers/note';
 
 //react-redux
 import { connect } from 'react-redux';
 
-class Paper extends Component {
+class EditContent extends Component {
   constructor(props) {
     super(props);
   }
@@ -53,4 +51,4 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(mapState, mapDispatch)(Paper);
+export default connect(mapState, mapDispatch)(EditContent);

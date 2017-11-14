@@ -6,12 +6,18 @@ import { Button } from 'react-native-elements';
 //components
 import Home from './app/Home';
 import ShowCalendar from './app/components/ShowCalendar';
+import NoteCalendar from './app/components/NoteCalendar';
+import EditCalendar from './app/components/EditCalendar';
+import DayNotes from './app/components/DayNotes';
+import UpdateNote from './app/components/UpdateNote';
+import EditContent from './app/components/EditContent';
 import Paper from './app/components/Paper';
 
 //actions
 import { updatedNote, getNoteState } from './app/reducers/note';
 import { selectDay, getDayState } from './app/reducers/day';
 import { selectSubject, getSubjectState } from './app/reducers/subject';
+import { getNoteIdState } from './app/reducers/id';
 
 //react-redux
 import { connect } from 'react-redux';
@@ -32,6 +38,10 @@ class Main extends Component {
         <Scene key="root">
           <Scene key="home" component={Home} renderBackButton={()=>(null)}/>
           <Scene key="calendar" component={ShowCalendar} title="Calendar"/>
+          <Scene key="note_calendar" component={NoteCalendar}/>
+          <Scene key="edit_calendar" component={EditCalendar}/>
+          <Scene key="date_notes" component={DayNotes} title="Notes"/>
+          <Scene key="update_note" component={UpdateNote} title="Edit"/>
           <Scene
            key="paper"
            component={Paper} 
@@ -39,7 +49,18 @@ class Main extends Component {
            onRight={() => {
              let info = this.props.retrieveState();
              axios.post('https://easynotes.herokuapp.com/api', { topic: info.subject, date: info.date, content: info.note });
-             console.log(this.props)
+             this.props.clearState();
+             Actions.home();
+           }}
+           rightTitle="Done"
+          />
+          <Scene
+           key="edit_note"
+           component={EditContent} 
+           title="Edit Note"
+           onRight={() => {
+             let info = this.props.retrieveState();
+             axios.put(`https://easynotes.herokuapp.com/api/${info.id}`, { topic: info.subject, date: info.date, content: info.note });
              this.props.clearState();
              Actions.home();
            }}
@@ -66,8 +87,9 @@ const mapDispatch = dispatch => {
       let subject = getSubjectState();
       let date = getDayState();
       let note = getNoteState();
+      let id = getNoteIdState();
 
-      return { subject, date, note };
+      return { subject, date, note, id };
     }
   }
 }

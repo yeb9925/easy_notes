@@ -3,21 +3,25 @@ import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
+  TextInput,
   Text,
-  View,
-  TextInput
+  View
 } from 'react-native';
 
+//react native tools
 import { Actions } from 'react-native-router-flux';
 import { Button } from 'react-native-elements';
 
 //actions
-import { selectSubject } from '../app/reducers/subject';
+import { selectSubject } from '../reducers/subject';
 
 //react-redux
 import { connect } from 'react-redux';
 
-class Home extends Component {
+//axios
+import axios from 'axios';
+
+class UpdateNote extends Component {
   constructor(props) {
     super(props);
   }
@@ -25,12 +29,6 @@ class Home extends Component {
   render(){
     return (
       <View style={styles.container}>
-        <Button 
-         onPress={() => Actions.note_calendar()} 
-         title="See Notes"
-         buttonStyle={{backgroundColor: '#DEB887', borderRadius: 10, margin: 5}}
-         textStyle={{textAlign: 'center'}}
-        />
         <Text style={styles.titleText}>Topic</Text>
         <TextInput
          onChangeText={(subject) => this.props.updateSubject(subject)}
@@ -39,21 +37,21 @@ class Home extends Component {
         />
         <Text style={styles.titleText}>Choose Date: </Text>
         <Button 
-         onPress={() => Actions.calendar()} 
+         onPress={() => Actions.edit_calendar()} 
          title="Open Calender"
          buttonStyle={{backgroundColor: '#FFDAB9', borderRadius: 10, margin: 5}}
          textStyle={{textAlign: 'center'}}
         />
         <Button
          title="Take Notes!"
-         onPress={() => Actions.paper()}
+         onPress={() => Actions.edit_note()}
          buttonStyle={{backgroundColor: '#DEB887', borderRadius: 10, margin: 5}}
          textStyle={{textAlign: 'center'}}
         />
       </View>
     )
   }
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -76,16 +74,16 @@ const styles = StyleSheet.create({
 });
 
 const mapState = (state) => {
-  return {
-    subject: state.subject
-  };
-}
-const mapDispatch = dispatch => {
-  return {
-    updateSubject(subject){
-      dispatch(selectSubject(subject));
+    return {
+      subject: state.subject
+    };
+  }
+  const mapDispatch = dispatch => {
+    return {
+      updateSubject(subject){
+        dispatch(selectSubject(subject));
+      }
     }
   }
-}
-
-export default connect(mapState, mapDispatch)(Home);
+  
+  export default connect(mapState, mapDispatch)(UpdateNote);
