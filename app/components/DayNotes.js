@@ -14,7 +14,11 @@ import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 
 //actions
+import { selectSubject } from '../reducers/subject';
+import { selectDay } from '../reducers/day';
+import { updatedNote } from '../reducers/note';
 import { updatedNoteId } from '../reducers/id';
+
 //axios
 import axios from 'axios';
 
@@ -50,8 +54,8 @@ class DayNotes extends Component {
                buttonStyle={{backgroundColor: '#DEB887', borderRadius: 10, margin: 3}}
                textStyle={{textAlign: 'center'}}
                onPress={()=>{
-                 this.props.updateId(note._id);
-                 Actions.update_note();
+                 this.props.updateEditState(note.topic, note.date, note.content, note._id);
+                 Actions.update_note({initSubj: note.topic});
                }}
               />
               <Button
@@ -96,9 +100,12 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    updateId(id){
-      dispatch(updatedNoteId(id))
-    }
+    updateEditState(subject, date, content, id){
+      dispatch(selectSubject(subject));
+      dispatch(selectDay(date));
+      dispatch(updatedNote(content));
+      dispatch(updatedNoteId(id));
+    },
   };
 }
 

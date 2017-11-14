@@ -14,6 +14,7 @@ import { Button } from 'react-native-elements';
 
 //actions
 import { selectSubject } from '../reducers/subject';
+import { selectDay } from '../reducers/day';
 
 //react-redux
 import { connect } from 'react-redux';
@@ -34,6 +35,7 @@ class UpdateNote extends Component {
          onChangeText={(subject) => this.props.updateSubject(subject)}
          style={styles.textfield}
          value={this.props.subject}
+         placeholder={this.props.initSubj}
         />
         <Text style={styles.titleText}>Choose Date: </Text>
         <Button 
@@ -44,7 +46,7 @@ class UpdateNote extends Component {
         />
         <Button
          title="Take Notes!"
-         onPress={() => Actions.edit_note()}
+         onPress={() => Actions.edit_note({note: this.props.initNote})}
          buttonStyle={{backgroundColor: '#DEB887', borderRadius: 10, margin: 5}}
          textStyle={{textAlign: 'center'}}
         />

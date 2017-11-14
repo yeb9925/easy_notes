@@ -23,6 +23,7 @@ class EditContent extends Component {
       <View style={styles.container}>
         <TextInput 
          onChangeText={(notes) => this.props.updateNote(notes)}
+         value={this.props.note}
          underlineColorAndroid='transparent'
          multiline={true} 
          autoFocus={true}
