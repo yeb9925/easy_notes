@@ -13,6 +13,8 @@ import { Button } from 'react-native-elements';
 
 //actions
 import { selectSubject } from '../app/reducers/subject';
+import { selectDay } from '../app/reducers/day';
+import { updatedNote } from '../app/reducers/note';
 
 //react-redux
 import { connect } from 'react-redux';
@@ -84,6 +86,11 @@ const mapDispatch = dispatch => {
   return {
     updateSubject(subject){
       dispatch(selectSubject(subject));
+    },
+    clearState(){
+      dispatch(selectSubject(''));
+      dispatch(selectDay(''));
+      dispatch(updatedNote(''));
     }
   }
 }

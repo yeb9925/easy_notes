@@ -30,10 +30,10 @@ class DayNotes extends Component {
     }
   }
 
-  componentDidMount(){
+  componentWillMount(){
     axios.get(`https://easynotes.herokuapp.com/api/${this.props.chosen_day}`)
       .then(res => res.data)
-      .then(notes => this.setState({ notes }));
+      .then(notes =>this.setState({ notes }));
   }
 
   render(){

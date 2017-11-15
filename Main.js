@@ -40,7 +40,11 @@ class Main extends Component {
           <Scene key="calendar" component={ShowCalendar} title="Calendar"/>
           <Scene key="note_calendar" component={NoteCalendar} title="Choose Date"/>
           <Scene key="edit_calendar" component={EditCalendar}/>
-          <Scene key="date_notes" component={DayNotes} title="Notes"/>
+          <Scene 
+           key="date_notes" 
+           component={DayNotes} 
+           title="Notes"
+          />
           <Scene key="update_note" component={UpdateNote} title="Edit Note"/>
           <Scene
            key="paper"

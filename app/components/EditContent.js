@@ -23,7 +23,7 @@ class EditContent extends Component {
       <View style={styles.container}>
         <TextInput 
          onChangeText={(notes) => this.props.updateNote(notes)}
-         value={this.props.note}
+         value={this.props.content}
          underlineColorAndroid='transparent'
          multiline={true} 
          autoFocus={true}
@@ -42,7 +42,9 @@ const styles = StyleSheet.create({
 });
 
 const mapState = (state) => {
-  return {};
+  return {
+    content: state.note
+  };
 }
 const mapDispatch = dispatch => {
   return {
