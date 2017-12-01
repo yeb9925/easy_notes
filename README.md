@@ -1,8 +1,8 @@
 # Easy Notes
 
-An android mobile application that allows a user to take notes and save them to view the notes for each day. They are also able to edit/delete notes if needed.
+  An android mobile application that allows a user to take notes and save them to view the notes for each day. They are also able to edit/delete notes if needed.
 
-The application is build with Node.js, React-Native, and React-Redux. The persistency of the notes are enabled through a running website (easy_notes.herokuapp.com) that I have deployed to fetch data and write to the database easy_notes.herokuapp.com. This deployed web application is runninng on Express server with a NoSQL database MongoDB as the database.
+  The application is build with Node.js, React-Native, and React-Redux. The persistency of the notes are enabled through a running website (easy_notes.herokuapp.com) that I have deployed to fetch data and write to the database easy_notes.herokuapp.com. This deployed web application is runninng on Express server with a NoSQL database MongoDB as the database.
 
 ## Getting Started
 
