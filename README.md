@@ -12,7 +12,7 @@ After that, run these scripts:
 
 ```
 git clone https://github.com/yeb9925/easy_notes
-cd easy_
+cd easy_notes
 npm install
 npm run android
 ```
